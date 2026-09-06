@@ -25,6 +25,7 @@ app.post('/generate', async (req, res) => {
 
     if (!response.ok) {
       const errText = await response.text();
+      console.error('Erreur Gemini:', response.status, errText);
       return res.status(response.status).json({ error: errText });
     }
 
@@ -40,3 +41,4 @@ app.post('/generate', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('Serveur Lania backend sur le port ' + PORT));
+
